@@ -1,0 +1,53 @@
+<head>
+  <script type='text/javascript' id='lt_ws' src='http://localhost:8833/socket.io/lighttable/ws.js'></script>
+  <script type='text/javascript'  src='js/raphael-min.js'></script>
+  <title>haircut</title>
+</head>
+
+<body>
+  {{> game}}
+</body>
+
+<template name="intro">
+  <h2 style="text-align:center">
+    The Nepal Police Officer's Haircut Policy Training Programme
+  </h2>
+</template>
+
+<template name="score">
+  <h1 style="text-align:center;">
+  {{#if isOver}}
+    <span>Game Over</span>
+	{{else}}   
+      <span>Score: {{score}} Lives: {{life}}</span>
+  {{/if}}
+ </h1>
+    
+</template>
+ 
+<template name="top" >
+  <table class="table table-bordered" style="background-color:#8BD05E">
+    <tr>
+      <td><h4>Name</h4></td>
+      <td><h4>Score</h4></td>
+    </tr>
+     {{#each topScorers}}
+    <tr>
+      <td>{{name}}</td>
+      <td>{{score}}</td>
+    </tr>
+  {{/each}}
+  </table>
+</template>
+
+<template name="game">
+  <div class="container" style="margin-top:50px">
+    	{{> intro}}
+      {{> score}}
+    <div id="game" style="background-color:#FF7A14;min-height:600px;border-radius:5px;">
+	</div>
+    <div style="margin-top:20px;">
+    {{> top}}
+    </div>
+  </div>
+</template>
